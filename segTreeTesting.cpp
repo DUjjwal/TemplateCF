@@ -42,6 +42,7 @@ struct segtree {
     void set(int i,int v,int x,int lx,int rx) {
         if(lx==rx) {
             values[x]=single(v);
+            return;
         }
         int mid=(lx+rx)/2;
         if(i<=mid)
