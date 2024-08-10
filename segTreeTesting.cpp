@@ -64,7 +64,7 @@ struct segtree {
         return a+b;
     }
     int calc(int l,int r) { //CHANGE THIS
-        calc(0,0,size-1,l,r);
+        return calc(0,0,size-1,l,r);
     }
         
 };
