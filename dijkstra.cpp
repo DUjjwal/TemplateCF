@@ -5,21 +5,19 @@ vector <list<pp>> graph;
 int dijkstra(int src,int n)
 {
     priority_queue<pp,vector <pp>,greater<pp>> pq;
-    vector <bool> vis(n,false);
     map <int,int> dist,via;
     for(int i=0;i<n;i++)dist[i]=INT_MAX;
     pq.push({0,src});//distance - node
     dist[src]=0;
     while(pq.size()) {
         pp curr=pq.top();
-        if(vis[curr.second]) {
+        if(dist[curr.second]<curr.first) {
             pq.pop();
             continue;
         }
-        vis[curr.second]=true;
         pq.pop();
         for(auto neigh:graph[curr.second]) {
-            if(!vis[neigh.first] && neigh.second+dist[curr.second] < dist[neigh.first]) {
+            if(neigh.second+dist[curr.second] < dist[neigh.first]) {
                 pq.push({neigh.second+dist[curr.second],neigh.first});
                 dist[neigh.first]=neigh.second+dist[curr.second];
                 via[neigh.first]=curr.second;
