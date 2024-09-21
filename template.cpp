@@ -58,6 +58,13 @@ ll mod_div(ll a, ll b, ll m) {a = a % m; b = b % m; return (mod_mul(a, mminvprim
 
 using namespace __gnu_pbds;
 typedef tree<int,null_type,less<int>,rb_tree_tag,tree_order_statistics_node_update> pbds;
+//***********************Random Number Generator***********************************
+std::mt19937 gen(std::random_device{}());
+
+int getRandomNumber(int n) {
+    std::uniform_int_distribution<> dist(0, n - 1);
+    return dist(gen);
+}
 
 /* less for ascending , greater for descending , less_equal multiset 
     pbds A;A.order_of_key(asd);*A.find_by_order(0)
