@@ -93,6 +93,6 @@ vector <vector <int>> matExpo(vector <vector <int>> &a,int k) {
 	vector <vector <int>> ans=matExpo(a,k/2);
 	vector <vector <int>> result=matmul(ans,ans);
 	if(k&1)
-		return matmul(result,ans);
+		return matmul(result,a);
 	return result;
 }
