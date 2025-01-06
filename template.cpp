@@ -70,3 +70,29 @@ int getRandomNumber(int n) {
     pbds A;A.order_of_key(asd);*A.find_by_order(0)
     *A.lower_bound(x) first element>=x
     *A.upper_bound(x) first element >x */
+
+
+//*******************Matrix Multiplication*********************************
+vector <vector <int>> matmul(vector <vector <int>> &a,vector <vector <int>> &b) {
+	int r1=a.size(),c1=a[0].size();
+	int r2=b.size(),c2=b[0].size();
+	vector <vector <int>> ans(r1,vector <int> (c2));
+	for(int i=0;i<r1;i++) {
+		for(int j=0;j<c2;j++) {
+			int val=0;
+			for(int k=0;k<c1;k++) {
+				val+=a[i][k]*b[k][j];
+			}
+			ans[i][j]=val;
+		}
+	}
+	return ans;
+}
+vector <vector <int>> matExpo(vector <vector <int>> &a,int k) {
+	if(k==1)return a;
+	vector <vector <int>> ans=matExpo(a,k/2);
+	vector <vector <int>> result=matmul(ans,ans);
+	if(k&1)
+		return matmul(result,ans);
+	return result;
+}
